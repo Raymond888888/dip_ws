@@ -2,8 +2,6 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-// #include <cv.h>
-// #include <highgui.h>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <ros/ros.h>
@@ -27,7 +25,7 @@ int main(int argc, char **argv)
 	waitKey(100);
 	if (!capture.isOpened())
 	{
-		printf("摄像头没有正常打开，重新插拔工控机上当摄像头\n");
+		printf("Caemra NOT Opend!\n");
 		return 0;
 	}
 
@@ -42,7 +40,7 @@ int main(int argc, char **argv)
 		{
 			break;
 		}
-		imshow("src", src_frame);
+		imshow("src_image", src_frame);
 		// 此处为实验部分，请自行增加直方图均衡化的代码
 
 #ifndef READIMAGE_ONLY

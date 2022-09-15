@@ -1,14 +1,4 @@
-//此代码仅供参考
-#include <iostream>
-#include <string>
-#include <algorithm>
-#include <opencv2/opencv.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
-using namespace cv;
-using namespace std;
+#include <drawImageHistogram.hpp>
 
 void openCVHist(const Mat src)
 {
@@ -40,7 +30,7 @@ void openCVHist(const Mat src)
         line(drawImage, Point(i, drawImage.rows - 1), Point(i, drawImage.rows - 1 - value), Scalar(255, 0, 0));
     }
     imshow("OpenCVHist", drawImage);
-    waitKey(0);
+    // waitKey(0);
 }
 
 //直方图绘制函数，参数vector<int> nums 是灰度图片256级灰度的像素个数
@@ -105,13 +95,4 @@ void calHist(const string img)
         }
     }
     drawHist(nums);
-}
-
-int main()
-{
-    string img = "./lena.jpeg";
-    calHist(img);
-
-    waitKey(0);
-    return 0;
 }

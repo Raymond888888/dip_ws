@@ -1,6 +1,6 @@
 #include <drawImageHistogram.hpp>
 
-void openCVHist(const Mat src)
+void openCVHist(const Mat src,string str)
 {
     //需要计算图像的哪个通道（bgr空间需要确定计算 b或g或r空间）
     const int channels[1] = {0};
@@ -29,7 +29,7 @@ void openCVHist(const Mat src)
         int value = cvRound(256 * 0.9 * (dstHist.at<float>(i) / g_dHistMaxValue));
         line(drawImage, Point(i, drawImage.rows - 1), Point(i, drawImage.rows - 1 - value), Scalar(255, 0, 0));
     }
-    imshow("OpenCVHist", drawImage);
+    imshow(str, drawImage);
     // waitKey(0);
 }
 

@@ -12,7 +12,7 @@
 using namespace cv;
 using namespace std;
 
-void openCVHist(const Mat src);
+void openCVHist(const Mat src,string str);
 void drawHist(vector<int> nums);
 void calHist(const string img);
 

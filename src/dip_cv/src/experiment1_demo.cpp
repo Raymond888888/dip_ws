@@ -40,11 +40,13 @@ int main(int argc, char **argv) {
         ROS_INFO("%d %d %d\n", src_frame.channels(), src_frame.cols, src_frame.rows);
 
         // 此处为实验部分，请自行增加直方图均衡化的代码
+        // AUTO EQUALIZED
         cv::cvtColor(src_frame, src_frame_gray, cv::COLOR_BGR2GRAY);
         cv::equalizeHist(src_frame_gray, dst);
         cv::imshow("Equalized Image", dst);
         cv::imshow("GrayImage", src_frame_gray);
-		openCVHist(src_frame_gray);
+		openCVHist(src_frame_gray,"gray_hist");
+		openCVHist(dst,"equalize_hist");
 
 #ifndef READIMAGE_ONLY
         //以下代码可设置机器人的速度值，从而控制机器人运动

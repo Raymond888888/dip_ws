@@ -6,7 +6,8 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/opencv.hpp>
 #include <string>
-#include <drawImageHistogram.hpp>
+#include "drawImageHistogram.hpp"
+#include "my_equalizehist.hpp"
 #define READIMAGE_ONLY
 #ifndef READIMAGE_ONLY
 #include <geometry_msgs/Twist.h>
@@ -37,12 +38,13 @@ int main(int argc, char **argv) {
             break;
         }
         cv::imshow("src_image", src_frame);
-        ROS_INFO("%d %d %d\n", src_frame.channels(), src_frame.cols, src_frame.rows);
+        // ROS_INFO("%d %d %d\n", src_frame.channels(), src_frame.cols, src_frame.rows);
 
         // 此处为实验部分，请自行增加直方图均衡化的代码
         // AUTO EQUALIZED
         cv::cvtColor(src_frame, src_frame_gray, cv::COLOR_BGR2GRAY);
         cv::equalizeHist(src_frame_gray, dst);
+        my_equalizeHist(src_frame_gray, dst);
         cv::imshow("Equalized Image", dst);
         cv::imshow("GrayImage", src_frame_gray);
 		openCVHist(src_frame_gray,"gray_hist");

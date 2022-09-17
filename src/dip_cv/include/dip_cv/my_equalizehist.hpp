@@ -8,8 +8,9 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <ros/ros.h>
 
 
-void equalizeHist(cv::InputArray src, cv::OutputArray dst);
+void my_equalizeHist(cv::InputArray src, cv::OutputArray dst);
 
 #endif 

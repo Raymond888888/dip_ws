@@ -1,5 +1,5 @@
-#ifndef DRAWIMAGEHISTOGRAM_H_
-#define DRAWIMAGEHISTOGRAM_H_
+#ifndef MY_EQUALIZEHIST_H_
+#define MY_EQUALIZEHIST_H_
 
 #include <iostream>
 #include <string>
@@ -9,8 +9,7 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-void openCVHist(const cv::Mat src,std::string str);
-void drawHist(std::vector<int> nums);
-void calHist(const std::string img);
 
-#endif
+void equalizeHist(cv::InputArray src, cv::OutputArray dst);
+
+#endif 

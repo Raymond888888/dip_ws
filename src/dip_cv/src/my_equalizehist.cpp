@@ -16,7 +16,7 @@ void my_equalizeHist(InputArray _src, OutputArray _dst)  // InputArray接口类,
     Mat dst = _dst.getMat();
     long int imgsize = src.rows * src.cols;
     long int pix_sum[255] = {0};
-    ROS_INFO("mat: %ld %d", src.size, src.cols);  // rows:720 cols:1280
+    ROS_INFO("mat: %d %d", src.rows, src.cols);  // rows:720 cols:1280
     ROS_INFO("mat(0,0): %d ", src.at<uchar>(719, 1279));
     for (long int r = 0; r < src.rows; r++) {
         for (long int c = 0; c < src.cols; c++) {

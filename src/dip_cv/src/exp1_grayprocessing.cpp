@@ -8,7 +8,7 @@
 #include <string>
 #include "drawImageHistogram.hpp"
 #include "my_equalizehist.hpp"
-#define READIMAGE_ONLY
+// #define READIMAGE_ONLY
 #ifndef READIMAGE_ONLY
 #include <geometry_msgs/Twist.h>
 #endif
@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     }
 
 #ifndef READIMAGE_ONLY
-    ros::Publisher pub = n.advertise<geometry_msgs::Twist>("/smoother_cmd_vel", 5);  //定义dashgo机器人的速度发布器
+    ros::Publisher pub_twistspd = n.advertise<geometry_msgs::Twist>("/smoother_cmd_vel", 5);  //定义dashgo机器人的速度发布器
 #endif
     cv::Mat src_frame;
     cv::Mat src_frame_gray;
@@ -38,7 +38,6 @@ int main(int argc, char **argv) {
             break;
         }
         cv::imshow("src_image", src_frame);
-        // ROS_INFO("%d %d %d\n", src_frame.channels(), src_frame.cols, src_frame.rows);
 
         // 此处为实验部分，请自行增加直方图均衡化的代码
         // AUTO EQUALIZED
@@ -50,6 +49,7 @@ int main(int argc, char **argv) {
         cv::imshow("Equalized Image", dst_my);
         cv::imshow("Equalized Image opencv", dst_opencv);
         cv::imshow("ERROR", dst_opencv-dst_my);
+		openCVHist(dst_opencv-dst_my,"error_hist");
 		openCVHist(src_frame_gray,"gray_hist");
 		openCVHist(dst_my,"equalize_hist");
 		openCVHist(dst_opencv,"equalize_hist_opencv");
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
         cmd_red.angular.x = 0;
         cmd_red.angular.y = 0;
         cmd_red.angular.z = 0.2;
-        pub.publish(cmd_red);
+        pub_twistspd.publish(cmd_red);
 #endif
         ros::spinOnce();
         cv::waitKey(5);

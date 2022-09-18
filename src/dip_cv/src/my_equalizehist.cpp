@@ -1,6 +1,14 @@
 #include "my_equalizehist.hpp"
 using namespace cv;
 
+uint8_t double2uint8(double num) {
+    uint8_t downint = (uint8_t)num;
+    if (num - downint >= 0.500)
+        return downint + 1;
+    else
+        return downint;
+}
+
 void my_equalizeHist(InputArray _src, OutputArray _dst)  // InputArray接口类,只能作为函数的形参参数使用
 {
     Mat src = _src.getMat();  //将传入的参数转换为Mat的结构
@@ -21,7 +29,7 @@ void my_equalizeHist(InputArray _src, OutputArray _dst)  // InputArray接口类,
     for (int r = 0; r < 256; r++) {
         pro = (double)pix_sum[r] / (double)imgsize;
         pro_sum += pro;
-        s[r] = 255.0 * pro_sum;
+        s[r] = double2uint8(255.0 * pro_sum);
     }
 
     for (long int r = 0; r < src.rows; r++) {

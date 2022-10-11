@@ -15,8 +15,8 @@
 
 int main(int argc, char **argv) {
     ROS_WARN("*****START*****");
-    ros::init(argc, argv, "trafficLaneTrack");  //初始化ROS节点
-    ros::NodeHandle n;
+    ros::init(argc, argv, "dip_cv");  //初始化ROS节点
+    ros::NodeHandle nc;
 
     cv::VideoCapture capture;
     capture.open(0);  //打开相机
@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     }
 
 #ifndef READIMAGE_ONLY
-    ros::Publisher pub_twistspd = n.advertise<geometry_msgs::Twist>("/smoother_cmd_vel", 5);  //定义dashgo机器人的速度发布器
+    ros::Publisher pub_twistspd = nc.advertise<geometry_msgs::Twist>("/smoother_cmd_vel", 5);  //定义dashgo机器人的速度发布器
 #endif
     cv::Mat src_frame;
     cv::Mat src_frame_gray;

@@ -11,12 +11,10 @@
 using namespace cv;
 class Gauss_Filter_Mine {
    public:
-    void Gaussian_Kernerl(Mat &kernel, double sigma);
-
     void Gaussian(Mat &Input, Mat &output, double sigma);
 };
 
-void Gaussian_Kernerl(Mat &kernel, double sigma) {
+void Gaussian_Generate_Kernerl(Mat &kernel, double sigma) {
     int dim = ceil(6 * sigma);
     if (!(dim % 2)) {
         dim += 1;
@@ -37,11 +35,11 @@ void Gaussian_Kernerl(Mat &kernel, double sigma) {
     }
 }
 
-void Gaussian(Mat &Input, Mat &output, double sigma) {
+void Gaussian_Filter(Mat &Input, Mat &output, double sigma) {
     Mat temp;
     Mat kernerl;
     output = Input.clone();
-    Gaussian_Kernerl(kernerl, sigma);
+    Gaussian_Generate_Kernerl(kernerl, sigma);
     int dim = kernerl.rows;
     copyMakeBorder(Input, temp, dim / 2, dim / 2, dim / 2, dim / 2, CV_HAL_BORDER_CONSTANT, Scalar(0, 0, 0));
     for (int i = dim / 2; i < temp.rows - dim / 2; i++) {

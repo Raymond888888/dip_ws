@@ -1,28 +1,26 @@
 #include <ros/ros.h>
+
+#include <iostream>
 #include <opencv2/core/core.hpp>
 #include <opencv2/opencv.hpp>
-#include <iostream>
+
 #include "gauss_filter.hpp"
 #include "morphology.hpp"
-using namespace cv; 
+using namespace cv;
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     ros::init(argc, argv, "exp2");
     ros::NodeHandle nh;
     VideoCapture capture;
     capture.open(0);
-    if (!capture.isOpened())
-    {
+    if (!capture.isOpened()) {
         ROS_WARN("can not open video");
         return 0;
     }
     Mat src;
-    while (ros::ok())
-    {
+    while (ros::ok()) {
         capture.read(src);
-        if (src.empty())
-        {
+        if (src.empty()) {
             ROS_WARN("src is empty!");
             return 0;
         }
@@ -34,10 +32,8 @@ int main(int argc, char **argv)
         Gaussian(gray_Img, gaussian_gray_img, 0.5);
         imshow("sigma = 1", gaussian_gray_img);
         Mat b_gray_img = gray_Img.clone();
-        for (int i = 0; i < gray_Img.rows; i++)
-        {
-            for (int j = 0; j < gray_Img.cols; j++)
-            {
+        for (int i = 0; i < gray_Img.rows; i++) {
+            for (int j = 0; j < gray_Img.cols; j++) {
                 if (gray_Img.at<uchar>(i, j) > 128)
                     b_gray_img.at<uchar>(i, j) = 255;
                 else

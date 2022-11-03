@@ -13,13 +13,13 @@ using namespace std;
 int main(int argc, char **argv) {
     ros::init(argc, argv, "exp2");
     ros::NodeHandle nh;
-    VideoCapture capture;
-    YAML::Node config = YAML::LoadFile("/home/raymond/dip_ws/src/dip_filters/config/config.yaml");
-    capture.open(0);
-    if (!capture.isOpened()) {
-        ROS_WARN("can not open video");
-        return 0;
-    }
+        VideoCapture capture;
+        YAML::Node config = YAML::LoadFile("/home/raymond/dip_ws/src/dip_exp2/config/config.yaml");
+        capture.open(0);
+        if (!capture.isOpened()) {
+            ROS_WARN("can not open video");
+            return 0;
+        }
     Mat src;
     while (ros::ok()) {
         if (!config["read_camera"].as<int>()) {
@@ -29,9 +29,9 @@ int main(int argc, char **argv) {
                 return 0;
             }
         } else {
-            src = imread("/home/raymond/dip_ws/src/dip_filters/config/11.png");
+            src = imread("/home/raymond/dip_ws/src/dip_exp3/config/11.png");
             if (config["read_camera"].as<int>() == 2)
-                src = imread("/home/raymond/dip_ws/src/dip_filters/config/22.png");
+                src = imread("/home/raymond/dip_ws/src/dip_exp3/config/22.png");
         }
         imshow("src_img", src);
         Mat gray_img;

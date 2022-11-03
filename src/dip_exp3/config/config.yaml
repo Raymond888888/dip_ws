@@ -1,2 +1,33 @@
-sigma: 1
+#circle
+sigma: 1 
 read_camera: 2
+pictures: "/home/raymond/dip_ws/src/dip_exp3/config/44.png"
+max_r: 200
+min_r: 100
+sigma: 0.8
+high_th: 20
+low_th: 10
+line_threth: 115
+
+
+#line
+# sigma: 1 
+# read_camera: 2
+# pictures: "/home/raymond/dip_ws/src/dip_exp3/config/33.png"
+# max_r: 200
+# min_r: 100
+# sigma: 1.8
+# high_th: 20
+# low_th: 10
+# line_threth: 115
+
+
+# sigma: 1 
+# read_camera: 2
+# pictures: "/home/raymond/dip_ws/src/dip_exp3/config/22.png"
+# max_r: 200
+# min_r: 100
+# sigma: 0.8
+# high_th: 20
+# low_th: 10
+# line_threth: 200

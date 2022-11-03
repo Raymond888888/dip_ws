@@ -1,0 +1,3 @@
+<launch>
+    <node name="dip_exp3" pkg="dip_exp3" type="dip_exp3"/>
+</launch>

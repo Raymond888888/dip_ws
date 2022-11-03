@@ -15,9 +15,8 @@
 
 int main(int argc, char **argv) {
     ROS_WARN("*****START*****");
-    ros::init(argc, argv, "dip_cv");  //初始化ROS节点
+    ros::init(argc, argv, "dip_exp1");  //初始化ROS节点
     ros::NodeHandle nc;
-
     cv::VideoCapture capture;
     capture.open(0);  //打开相机
     cv::waitKey(100);

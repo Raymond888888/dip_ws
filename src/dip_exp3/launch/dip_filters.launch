@@ -1,3 +1,0 @@
-<launch>
-    <node name="dip_filters" pkg="dip_filters" type="dip_filters"/>
-</launch>

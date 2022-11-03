@@ -1,3 +1,0 @@
-<launch>
-    <node name="dip_cv" pkg="dip_cv" type="dip_cv"/>
-</launch>
